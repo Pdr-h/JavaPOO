@@ -6,16 +6,15 @@ package aplicacao;
  */
 import java.util.*;
 import javax.swing.*;
-import java.text.*;
 
 public class Cliente {
 
 static class Cadastro {
     String nomeCampo;
     String senhaCampo;
-    public Cadastro(String nomeCampo, String senhaCampo) {
-    this.nomeCampo = nomeCampo;
-    this.senhaCampo = senhaCampo;
+        public Cadastro(String nomeCampo, String senhaCampo) {
+            this.nomeCampo = nomeCampo;
+            this.senhaCampo = senhaCampo;
     }
 }
     
@@ -42,9 +41,34 @@ Cadastro cadastroCliente(){
         }
 }
 
-void verificarCliente(){
-    
-}
-    
-    
+void verificarCliente(String nomeCampo, String senhaCampo){
+        JTextField login = new JTextField();
+        JPasswordField senha = new JPasswordField();
+        //tela
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(new JLabel("Digite seu Nome/Login:"));
+        panel.add(login);
+        panel.add(new JLabel("Digite sua Senha:"));
+        panel.add(senha);
+        
+        JOptionPane.showConfirmDialog(null, panel, "Cadastro - Cliente", JOptionPane.OK_CANCEL_OPTION);
+        String loginOK = login.getText();
+        String senhaOK = new String(senha.getPassword());
+        
+        boolean resLog = loginOK.equals(nomeCampo);
+        boolean resPass = senhaOK.equals(senhaCampo);
+        
+        if(resLog != true || resPass != true){
+            while(resLog != true || resPass != true){
+                JOptionPane.showMessageDialog(null, "LOGIN OU SENHA INCORRETO");
+                JOptionPane.showConfirmDialog(null, panel, "Cadastro - Cliente", JOptionPane.OK_CANCEL_OPTION);
+                loginOK = login.getText();
+                senhaOK = new String(senha.getPassword());
+                resLog = loginOK.equals(nomeCampo);
+                resPass = senhaOK.equals(senhaCampo);
+            }
+        }
+        JOptionPane.showMessageDialog(null, "ENTROU");
+    }   
 }
