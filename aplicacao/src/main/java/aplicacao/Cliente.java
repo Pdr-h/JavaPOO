@@ -17,19 +17,17 @@ public class Cliente {
     void cadastrarCliente() {
         String nome = JOptionPane.showInputDialog(null, "Digite o nome do cliente:", "Cadastro de Cliente", JOptionPane.PLAIN_MESSAGE);
         String idadeStr = JOptionPane.showInputDialog(null, "Digite a idade do cliente:", "Cadastro de Cliente", JOptionPane.PLAIN_MESSAGE);
-        int idade = Integer.parseInt(idadeStr); // Convertendo a idade para um valor inteiro
+        int idade = Integer.parseInt(idadeStr); 
 
         listaClientes.add(nome);
 
         JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!\nNome: " + nome + "\nIdade:" + idade, "Cliente Cadastro", JOptionPane.INFORMATION_MESSAGE);
 
-        // Construir uma string com todos os clientes cadastrados
         StringBuilder clientesCadastrados = new StringBuilder("Lista de Clientes Cadastrados:\n");
         for (String cliente : listaClientes) {
             clientesCadastrados.append("Nome: ").append(cliente).append("\n");
         }
 
-        // Exibir a lista de clientes cadastrados
         JOptionPane.showMessageDialog(null, clientesCadastrados.toString(), "Lista de Clientes", JOptionPane.PLAIN_MESSAGE);
     }
 }
